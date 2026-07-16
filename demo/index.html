@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ticket Triage Console — Qwen3-4B fine-tune</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="brand">
+    <span class="dot"></span>
+    <h1>Ticket Triage Console</h1>
+  </div>
+  <div class="sub">
+    Qwen3-4B QLoRA fine-tune · self-hosted with <strong>vLLM</strong> on a T4
+    · <a href="results.html">eval results</a>
+    · <a href="https://github.com/ahmedraza-96/ticket-triage-llm" target="_blank">code</a>
+  </div>
+</header>
+
+<main>
+  <section class="panel input-panel">
+    <h2>Incoming ticket</h2>
+    <textarea id="ticket" placeholder="Paste a customer support ticket here..."></textarea>
+    <div class="samples" id="samples"></div>
+    <button id="triage">Triage ticket</button>
+    <div class="endpoint" id="endpoint-status"></div>
+  </section>
+
+  <section class="panel output-panel">
+    <h2>Triage result</h2>
+    <div class="result-head">
+      <span id="category" class="badge hidden"></span>
+      <span id="timing" class="timing"></span>
+    </div>
+    <div id="reply" class="reply">
+      <span class="placeholder-text">The routed category and a drafted reply will stream here.</span>
+    </div>
+    <div class="raw-toggle"><label><input type="checkbox" id="show-raw"> show raw JSON stream</label></div>
+    <pre id="raw" class="raw hidden"></pre>
+  </section>
+</main>
+
+<footer>
+  Model: <a href="https://huggingface.co/ahmedraza-96/Qwen3-4B-Instruct-2507-ticket-triage" target="_blank">
+  ahmedraza-96/Qwen3-4B-Instruct-2507-ticket-triage</a> — JSON format learned via fine-tuning, no guided decoding.
+</footer>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

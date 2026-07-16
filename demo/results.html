@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eval results — ticket-triage-llm</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+</head>
+<body>
+<header>
+  <div class="brand"><span class="dot"></span><h1>Before / after evaluation</h1></div>
+  <div class="sub">
+    Fine-tuned Qwen3-4B vs its base model vs Llama-3.3-70B (API) —
+    <a href="index.html">back to console</a>
+    · <a href="https://github.com/ahmedraza-96/ticket-triage-llm" target="_blank">raw artifacts</a>
+  </div>
+</header>
+
+<div class="results-wrap">
+  <div id="tables"></div>
+  <div class="charts">
+    <div class="chart-box"><canvas id="det-chart"></canvas></div>
+    <div class="chart-box"><canvas id="judge-chart"></canvas></div>
+  </div>
+</div>
+
+<script>
+const ARMS = [
+  ["base__test_full", "base", "Base Qwen3-4B (zero-shot)", "#94a3b8"],
+  ["tuned__test_full", "tuned", "Fine-tuned Qwen3-4B (QLoRA)", "#f97316"],
+  ["groq70b__subset", "groq70b", "Llama-3.3-70B API (3-shot)", "#38bdf8"],
+];
+
+fetch("latest.json").then(r => r.json()).then(render).catch(() => {
+  document.getElementById("tables").innerHTML =
+    "<p style='color:#8fa0c7'>latest.json not found — run <code>python evals/report.py</code> first.</p>";
+});
+
+function render(report) {
+  const rows = ARMS.filter(([k]) => report.scores[k]);
+  let html = `<table><tr><th>Model</th><th>n</th><th>JSON validity</th>
+    <th>Category accuracy</th><th>Macro-F1</th></tr>`;
+  for (const [k, arm, label] of rows) {
+    const s = report.scores[k];
+    const hl = arm === "tuned" ? ' class="tuned"' : "";
+    html += `<tr${hl}><td>${label}</td><td>${s.n}</td>
+      <td class="${arm === "tuned" ? "hl" : ""}">${pct(s.json_validity.rate)}</td>
+      <td>${pct(s.category_accuracy.rate)}</td><td>${s.macro_f1.toFixed(3)}</td></tr>`;
+  }
+  html += "</table>";
+
+  const js = report.judge_summary || {};
+  if (Object.keys(js).length) {
+    html += `<table><tr><th>Model</th><th>judged</th><th>Correctness</th>
+      <th>Tone</th><th>Policy safety</th></tr>`;
+    for (const [k, arm, label] of rows) {
+      if (!js[arm]) continue;
+      const j = js[arm];
+      const hl = arm === "tuned" ? ' class="tuned"' : "";
+      html += `<tr${hl}><td>${label}</td><td>${j.n_judged}</td>
+        <td>${j.avg_correctness}</td><td>${j.avg_tone}</td><td>${j.avg_policy_safety}</td></tr>`;
+    }
+    html += "</table>";
+  }
+  document.getElementById("tables").innerHTML = html;
+
+  chart("det-chart", "Deterministic metrics", ["Macro-F1", "JSON validity", "Accuracy"],
+    rows.map(([k, , label, color]) => ({
+      label, backgroundColor: color,
+      data: [report.scores[k].macro_f1, report.scores[k].json_validity.rate,
+             report.scores[k].category_accuracy.rate],
+    })), 1.0);
+
+  if (Object.keys(js).length) {
+    chart("judge-chart", "Reply quality (LLM-as-judge, 1–5)",
+      ["Correctness", "Tone", "Policy safety"],
+      rows.filter(([, arm]) => js[arm]).map(([, arm, label, color]) => ({
+        label, backgroundColor: color,
+        data: [js[arm].avg_correctness, js[arm].avg_tone, js[arm].avg_policy_safety],
+      })), 5);
+  }
+}
+
+const pct = (x) => (x * 100).toFixed(1) + "%";
+
+function chart(id, title, labels, datasets, max) {
+  new Chart(document.getElementById(id), {
+    type: "bar",
+    data: { labels, datasets },
+    options: {
+      responsive: true,
+      scales: { y: { beginAtZero: true, max, grid: { color: "#1e2a4a" }, ticks: { color: "#8fa0c7" } },
+                x: { grid: { display: false }, ticks: { color: "#e6ecff" } } },
+      plugins: { title: { display: true, text: title, color: "#e6ecff", font: { family: "Sora", size: 14 } },
+                 legend: { labels: { color: "#8fa0c7", font: { size: 10 } } } },
+    },
+  });
+}
+</script>
+</body>
+</html>
