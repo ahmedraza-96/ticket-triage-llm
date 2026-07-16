@@ -1,0 +1,37 @@
+name: evals
+
+# Re-scores the committed completion artifacts and enforces the quality gate.
+# CPU-only, no secrets: deterministic metrics are always re-checkable; judge
+# scores are read from the committed evals/runs/ outputs.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "artifacts/completions/**"
+      - "evals/**"
+      - "prompts/**"
+      - ".github/workflows/evals.yml"
+  pull_request:
+    paths:
+      - "artifacts/completions/**"
+      - "evals/**"
+      - "prompts/**"
+  workflow_dispatch:
+
+jobs:
+  score-and-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install pandas
+      - name: Deterministic scoring (from committed artifacts)
+        run: python evals/score.py
+      - name: Quality gate
+        run: python evals/check_thresholds.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: scores
+          path: evals/runs/scores.json

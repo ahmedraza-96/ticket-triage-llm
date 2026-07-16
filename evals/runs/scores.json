@@ -1,0 +1,95 @@
+{
+  "groq70b__subset": {
+    "n": 5,
+    "model": "llama-3.3-70b-versatile",
+    "json_validity": {
+      "rate": 1.0,
+      "n_valid": 5,
+      "ci95": [
+        0.5655,
+        1.0
+      ]
+    },
+    "category_accuracy": {
+      "rate": 0.4,
+      "ci95": [
+        0.1176,
+        0.7693
+      ]
+    },
+    "macro_f1": 0.1515,
+    "per_class": {
+      "ACCOUNT": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 1
+      },
+      "CANCEL": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 1
+      },
+      "CONTACT": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0
+      },
+      "DELIVERY": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 1
+      },
+      "FEEDBACK": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0
+      },
+      "INVOICE": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0
+      },
+      "ORDER": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 1
+      },
+      "PAYMENT": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0
+      },
+      "REFUND": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0
+      },
+      "SHIPPING": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0
+      },
+      "SUBSCRIPTION": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "f1": 0.6667,
+        "support": 1
+      }
+    },
+    "latency_ms": {
+      "p50": 705.0,
+      "p95": 1140.2
+    },
+    "parse_errors": []
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "label2id": {
+    "ACCOUNT": 0,
+    "CANCEL": 1,
+    "CONTACT": 2,
+    "DELIVERY": 3,
+    "FEEDBACK": 4,
+    "INVOICE": 5,
+    "ORDER": 6,
+    "PAYMENT": 7,
+    "REFUND": 8,
+    "SHIPPING": 9,
+    "SUBSCRIPTION": 10
+  },
+  "id2label": {
+    "0": "ACCOUNT",
+    "1": "CANCEL",
+    "2": "CONTACT",
+    "3": "DELIVERY",
+    "4": "FEEDBACK",
+    "5": "INVOICE",
+    "6": "ORDER",
+    "7": "PAYMENT",
+    "8": "REFUND",
+    "9": "SHIPPING",
+    "10": "SUBSCRIPTION"
+  },
+  "num_labels": 11,
+  "dataset_id": "bitext/Bitext-customer-support-llm-chatbot-training-dataset",
+  "source_url": "https://huggingface.co/datasets/bitext/Bitext-customer-support-llm-chatbot-training-dataset",
+  "split": {
+    "train": 19708,
+    "val": 2463,
+    "test": 2464
+  },
+  "seed": 42,
+  "parity_note": "Split verified identical to ahmedraza-96/support-ticket-classifier (same cleaning + seed); this project adds reply/intent columns."
+}

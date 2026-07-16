@@ -1,0 +1,57 @@
+[
+  {
+    "ticket": "i do not know how to inform of problems with a signup",
+    "category": "ACCOUNT",
+    "reply": "No worries! I'm here to assist you in reporting any problems you encounter during the signup process. The first step is to visit our website and navigate to the customer support page. There, you'll find different options to reach out to us, such as live chat, email, or phone support. Just provide the necessary details about the signup issue you're facing, and our dedicated team will promptly address it. Your proactive effort in notifying us about the problem is greatly appreciated, as it helps us improve our services and ensure a smooth signup experience for all users. If you need any further guidance or have additional questions, please don't hesitate to ask."
+  },
+  {
+    "ticket": "where can I check the withdrawal charge?",
+    "category": "CANCEL",
+    "reply": "Definitely! I can assist you in locating the details regarding the withdrawal charge. You can find this information on our website's fees and charges section or by contacting our customer service team."
+  },
+  {
+    "ticket": "do ya have an e-mail  to contact customer support",
+    "category": "CONTACT",
+    "reply": "Thank you for reaching out! If you prefer to contact our customer support team via email, please send your inquiry or concern to {{Customer Support Email}}. Our team will be happy to assist you promptly. Is there anything else I can help you with?"
+  },
+  {
+    "ticket": "need assistance to see how soon can I expect theorder",
+    "category": "DELIVERY",
+    "reply": "We understand that you're eager to receive your order and would like to know when it will arrive. To provide you with accurate information, could you please provide us with the {{Order Number}}? With that, we'll be able to track your order and give you an estimated delivery date. Thank you for your patience as we assist you in this matter."
+  },
+  {
+    "ticket": "help to lodge a complaint",
+    "category": "FEEDBACK",
+    "reply": "I'm sorry to hear that you need assistance in lodging a complaint. It's important to us that we address your concerns and provide a resolution. To help you lodge a complaint, I recommend reaching out to our dedicated customer support team at {{Customer Support Phone Number}} or through our Live Chat on our website at {{Website URL}}. They will guide you through the process and ensure that your complaint is properly documented and escalated to the appropriate department for investigation. Your feedback is valuable to us, and we appreciate the opportunity to address any issues you may have."
+  },
+  {
+    "ticket": "I need assistance giving a quick look at my invoice #85632",
+    "category": "INVOICE",
+    "reply": "Definitely! I completely understand your need for a quick look at your invoice with the number #{{Invoice Number}}. To assist you better, could you please let me know if you are looking for any specific details or if you have any other questions related to this invoice? Rest assured, I'm here to provide you with the information you need to ensure a seamless experience."
+  },
+  {
+    "ticket": "I need to add a product to purchase {{Order Number}}, help me",
+    "category": "ORDER",
+    "reply": "Firstly, thank you for contacting us and sharing your concern about adding a product to purchase number {{Order Number}}. We understand the importance of making adjustments to your purchase, and we'll do our best to assist you. In order to add a product to your purchase, we kindly request you to provide us with the following details: the name or description of the product you would like to add and any other relevant information such as its SKU or item number if available. This information will help us ensure that the product is added accurately and your purchase reflects your preferences. We appreciate your cooperation and look forward to resolving this for you. How can we further assist you today?"
+  },
+  {
+    "ticket": "i want help to see ur available payment methods",
+    "category": "PAYMENT",
+    "reply": "Thank you for your request! I would be delighted to assist you in exploring our available payment methods. At our company, we offer a variety of secure and convenient payment options. These include credit/debit cards, such as Visa, Mastercard, and American Express, as well as popular online payment platforms like PayPal. Additionally, we accept payments via bank transfer, Apple Pay for Apple users, and Google Wallet for seamless checkouts. If you need further clarification or have any questions about these payment methods, please don't hesitate to ask. Your satisfaction is our top priority!"
+  },
+  {
+    "ticket": "where to see the bloody rebate current status?",
+    "category": "REFUND",
+    "reply": "I'm following the importance of checking the current status of your rebate. To view the latest updates on your rebate, you can visit our website and log into your account. Once you're logged in, navigate to the \"Rebate\" section in your account dashboard. There, you should be able to see the most up-to-date information regarding your rebate. If you encounter any difficulties or have further questions, please don't hesitate to reach out to our support team. We're here to assist you and ensure that you have a smooth experience throughout the process."
+  },
+  {
+    "ticket": "I have problems submitting the secondary delivery address",
+    "category": "SHIPPING",
+    "reply": "I'll do my best! I understand that you're encountering difficulties when trying to submit the secondary delivery address. To assist you, please follow these steps:\n\n1. Log in to your account on our website or app.\n2. Navigate to the 'My Account' or 'Profile' section.\n3. Look for the option labeled 'Shipping Addresses' or similar.\n4. Select the option that allows you to add a new address or edit existing addresses.\n5. Enter the details of your secondary delivery address in the appropriate fields.\n6. Double-check that all the information is accurate and click on the 'Submit' or 'Save' button to complete the process.\n\nIf you're still experiencing issues after following these steps, please let me know the specific problem you're encountering, such as error messages or missing fields. This way, we can provide you with further assistance tailored to your situation."
+  },
+  {
+    "ticket": "need assistance unsubscribing to your newsletter",
+    "category": "SUBSCRIPTION",
+    "reply": "I perceive that you need assistance with unsubscribing from our newsletter. I apologize for any inconvenience this may have caused. To proceed with the unsubscribe process, could you please provide me with the email address associated with your subscription? With that information, I'll be able to locate your account and help you unsubscribe promptly. Your satisfaction is of utmost importance to us, and we want to ensure that we address your request accurately and efficiently."
+  }
+]

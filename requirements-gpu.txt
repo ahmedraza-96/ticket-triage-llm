@@ -1,0 +1,13 @@
+# GPU session stack (Kaggle/Colab T4). Exact pins are recorded here after the
+# Phase-2 smoke run validates them on T4 (sm75 needs fp16 + xformers fallback);
+# the training run's full `pip freeze` is committed as an artifact and included
+# in the HF model card.
+unsloth
+trl
+peft
+bitsandbytes
+transformers>=4.53
+vllm
+openai>=1.40
+pandas
+datasets

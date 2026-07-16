@@ -1,0 +1,19 @@
+# data: raw split CSVs are large and fully reproducible from prepare_data.py;
+# the frozen eval subsets in data/eval/ ARE committed (force-added).
+data/train.csv
+data/val.csv
+data/test.csv
+data/sft/
+
+# secrets + caches
+.env
+evals/cache.sqlite
+demo/config.js
+
+# training outputs (live on HF Hub, not in git)
+outputs/
+checkpoints/
+
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
