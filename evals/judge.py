@@ -33,7 +33,7 @@ sys.path.insert(0, str(Path(__file__).parents[1]))
 
 from evals.cache import ResponseCache, make_key            # noqa: E402
 from evals.common import completions_path, read_jsonl      # noqa: E402
-from evals.run_api_arm import Pacer                        # noqa: E402
+from evals.run_api_arm import Pacer, retry_after_s         # noqa: E402
 
 JUDGE_MODEL = "openai/gpt-oss-120b"
 CONCURRENCY = 2
@@ -93,8 +93,10 @@ def call_judge(client, prompt: str) -> dict:
         except Exception as exc:
             last = exc
             if attempt < MAX_RETRIES - 1:
-                time.sleep(delay)
-                delay *= 2
+                hint = retry_after_s(exc)  # daily-cap 429s say how long to wait
+                wait = hint + 10 if hint is not None else delay
+                time.sleep(wait)
+                delay = min(delay * 2, 120)
     raise RuntimeError(f"Judge failed after {MAX_RETRIES} attempts: {last}")
 
 

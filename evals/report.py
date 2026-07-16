@@ -31,7 +31,7 @@ BENCH_DIR = REPO_ROOT / "artifacts" / "benchmarks"
 ARM_LABELS = {
     "base__test_full": ("base", "Base Qwen3-4B (zero-shot)"),
     "tuned__test_full": ("tuned", "Fine-tuned Qwen3-4B (QLoRA)"),
-    "groq70b__subset": ("groq70b", "Llama-3.3-70B API (11-shot)"),
+    "groq70b__subset": ("groq70b", "Llama-3.3-70B API (3-shot)"),
 }
 
 # API pricing for the cost comparison table ($/1M tokens, input/output).

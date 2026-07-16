@@ -79,6 +79,8 @@ python evals/check_thresholds.py
 - **Why commit completions?** Eval claims rot when they can't be re-checked.
   Committing raw outputs makes the comparison auditable and lets CI act as a
   regression gate for prompt/parser changes.
-- **Why is the Groq arm only 550 rows?** Free-tier TPM budget. It's a
-  stratified 50/class sample reported with Wilson 95% CIs; the base/tuned arms
-  use the full 2,464-row test set.
+- **Why is the Groq arm only 176 rows?** Groq's free tier caps
+  `llama-3.3-70b-versatile` at 100k tokens/day; a full-test-set few-shot run
+  would need ~9 days of quota. The arm uses the stratified 16/class judged
+  subset (identical cases across all three arms) reported with Wilson 95% CIs;
+  the base/tuned arms use the full 2,464-row test set.
